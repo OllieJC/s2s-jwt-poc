@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hello</title>
+        <style>
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto;
+    margin: 3em;
+}
+.container {
+    background: #e5e5e5;
+    padding: 1em;
+    margin: 2em 0;
+    max-width: 600px;
+}
+p { line-break: anywhere; }
+        </style>
+    </head>
+    <body>
+        <h1>Hello, IETF 👋</h1>
+        <div class="container">
+            <p>
+                This is a simple example of a frontend application that interacts with a backend to get and increment a counter using JWT-based authentication.
+            </p>
+            <p>
+                My client metadata is available at:
+                <br>
+                <strong><a href="{{ client_id }}" target="_blank">{{ client_id }}</a></strong>
+            </p>
+            <p>
+                My public key (JWKs) is available at:
+                <br>
+                <strong><a href="{{ jwks_uri }}" target="_blank">{{ jwks_uri }}</a></strong>
+            </p>
+            <p>
+                <small>Frontend: CloudFront + Lambda@Edge
+                    <br>
+                &nbsp;&nbsp;→ Backend: Lambda Function URL ↔ Database (storing client ID and JTI pairs)</small>
+            </p>
+        </div>
+        <div class="container">
+            <h2>Get Counter</h2>
+            <p>
+                Current counter: <strong>{{ counter }}</strong>
+            </p>
+            <div>
+                <h3>Get counter URL</h3>
+                <p>{{ backend_endpoint_get }}</p>
+            </div>
+            <div>
+                <h3>Get counter JWT</h3>
+                <h4>Signed:</h4>
+                <p>{{ get_jwt }}</p>
+                <h4>Header:</h4>
+                <p>{{ get_jwt_header | safe }}</p>
+                <h4>Payload:</h4>
+                <p>{{ get_jwt_payload | safe }}</p>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Increment Counter</h2>
+            <p>
+                Incremented: <strong>{{ increment_status }}</strong>
+            </p>
+            <div>
+                <h3>Increment counter URL</h3>
+                <p>{{ backend_endpoint_increment }}</p>
+            </div>
+            <div>
+                <h3>Increment counter JWT</h3>
+                <p>{{ increment_jwt }}</p>
+                <h4>Header:</h4>
+                <p>{{ increment_jwt_header | safe }}</p>
+                <h4>Payload:</h4>
+                <p>{{ increment_jwt_payload | safe }}</p>
+            </div>
+        </div>
+    </body>
+</html>
