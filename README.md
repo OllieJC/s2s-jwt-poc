@@ -3,7 +3,16 @@ Service to Service Authentication with JWT Bearers (Proof of Concept)
 
 Some work in progress code currently available at `wip/`
 
-## Diagram
+## Example
+
+- `ServiceA` - website backend
+  - where `iss` would be the client ID metadata document
+  - like `https://service-a.example.com/.well-known/cimd-workload-1.json`
+- `ServiceB` - API
+  - where `aud` might be `https://service-b.example.com/api/get-counter?v=1`
+- `Auth Server` - may be required by a service and redirected to via `WWW-Authenticate`
+
+### Diagram
 
 ``` mermaid
 sequenceDiagram
